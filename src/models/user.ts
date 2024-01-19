@@ -13,15 +13,15 @@ module.exports = (sequelize: any, Sequelize: any) => {
         allowNull: false,
       },
       username: {
-        types: Sequelize.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       password: {
-        types: Sequelize.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       verified: {
-        types: Sequelize.BOOLEAN,
+        type: Sequelize.BOOLEAN,
         defaultValue: 0,
       },
       createdAt: {
