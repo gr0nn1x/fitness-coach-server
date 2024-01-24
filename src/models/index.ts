@@ -17,10 +17,17 @@ let db = {
   Sequelize,
   sequelize,
   users: require("./user")(sequelize, Sequelize),
+  accountRole: require("./accountrole")(sequelize, Sequelize),
+  userAccountRoles: require("./useraccountroles")(sequelize, Sequelize),
 };
 
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
-db.users = require("./user")(sequelize, Sequelize);
+db.userAccountRoles.belongsTo(db.users, {
+  foreignKey: "userid",
+  onDelete: "cascade",
+});
 
+db.userAccountRoles.belongsTo(db.accountRole, {
+  foreignKey: "accountroleid",
+  onDelete: "cascade",
+});
 export default db;
