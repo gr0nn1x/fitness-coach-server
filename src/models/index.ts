@@ -21,6 +21,16 @@ let db = {
   userAccountRoles: require("./useraccountroles")(sequelize, Sequelize),
 };
 
+db.users.belongsToMany(db.accountRole, {
+  through: db.userAccountRoles,
+  as: "userRole",
+});
+
+db.accountRole.belongsToMany(db.users, {
+  through: db.userAccountRoles,
+  as: "user",
+});
+/* 
 db.userAccountRoles.belongsTo(db.users, {
   foreignKey: "userid",
   onDelete: "cascade",
@@ -29,5 +39,5 @@ db.userAccountRoles.belongsTo(db.users, {
 db.userAccountRoles.belongsTo(db.accountRole, {
   foreignKey: "accountroleid",
   onDelete: "cascade",
-});
+}); */
 export default db;
